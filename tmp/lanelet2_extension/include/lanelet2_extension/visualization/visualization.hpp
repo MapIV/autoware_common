@@ -280,6 +280,12 @@ visualization_msgs::msg::MarkerArray generateLaneletIdMarker(
 visualization_msgs::msg::MarkerArray obstaclePolygonsAsMarkerArray(
   const lanelet::ConstPolygons3d & obstacle_polygons, const std_msgs::msg::ColorRGBA & c);
 
+visualization_msgs::msg::MarkerArray gnssavailableareaPolygonsAsMarkerArray(
+  const lanelet::ConstPolygons3d & gnss_available_polygons, const std_msgs::msg::ColorRGBA & c);
+
+visualization_msgs::msg::MarkerArray switchingareaPolygonsAsMarkerArray(
+  const lanelet::ConstPolygons3d & swiching_area_polygons, const std_msgs::msg::ColorRGBA & c);
+
 /**
  * [noObstacleSegmentationAreaAsMarkerArray creates marker array to visualize no obstacle
  * segmentation area]

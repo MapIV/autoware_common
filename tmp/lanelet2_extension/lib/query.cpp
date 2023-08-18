@@ -919,6 +919,47 @@ std::vector<lanelet::ConstLanelets> query::getPrecedingLaneletSequences(
   }
   return lanelet_sequences_vec;
 }
+
+// lanelet::ConstPolygons3d query::getAllGnssAvailableArea(const lanelet::LaneletMapConstPtr & lanelet_map_ptr)
+// {
+//   lanelet::ConstPolygons3d gnss_avalilable_area_markings;
+//   for (const auto & ls : lanelet_map_ptr->polygonLayer) {
+//     const std::string type = ls.attributeOr(lanelet::AttributeName::Type, "none");
+//     if (type.compare("gnss_available_area") == 0) {
+//       gnss_avalilable_area_markings.push_back(ls);
+//     }
+//   }
+//   return gnss_avalilable_area_markings;
+// }
+
+lanelet::ConstPolygons3d query::getAllGnssAvailableArea(
+  const lanelet::LaneletMapConstPtr & lanelet_map_ptr)
+{
+  lanelet::ConstPolygons3d gnss_avalilable_area_markings;
+  for (const auto & poly : lanelet_map_ptr->polygonLayer) {
+    const std::string type = poly.attributeOr(lanelet::AttributeName::Type, "none");
+    if (type == "gnss_available_area") {
+      gnss_avalilable_area_markings.push_back(poly);
+    }
+  }
+  return gnss_avalilable_area_markings;
+}
+
+lanelet::ConstPolygons3d query::getAllSwitchingArea(
+  const lanelet::LaneletMapConstPtr & lanelet_map_ptr)
+{
+  lanelet::ConstPolygons3d gnss_avalilable_area_markings;
+  for (const auto & poly : lanelet_map_ptr->polygonLayer) {
+    const std::string type = poly.attributeOr(lanelet::AttributeName::Type, "none");
+    if (type == "switching_area") {
+      gnss_avalilable_area_markings.push_back(poly);
+    }
+  }
+  return gnss_avalilable_area_markings;
+}
+
+
+
 }  // namespace lanelet::utils
 
 // NOLINTEND(readability-identifier-naming)
